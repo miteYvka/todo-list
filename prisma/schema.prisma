@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id            String    @id @default(uuid()) @db.Uuid
+  firstName     String    @db.VarChar(16)
+  secondName    String    @db.VarChar(16)
+  thirdName     String    @db.VarChar(16)
+  login         String    @db.VarChar(32) @unique
+  password      String    @db.VarChar(64)
+  headUserId    String    @db.VarChar(64)    
+}
+
+model task {
+  id            String    @id @default(uuid()) @db.Uuid
+  headline      String    @db.VarChar(64)
+  description   String    @db.VarChar(64)
+  endDate       DateTime  @db.Date
+  refreshDate   DateTime  @db.Date
+  priority      String    @db.VarChar(16)
+  status        String    @db.VarChar(16) 
+  createrId     String    @db.VarChar(64)
+  responsibleId String    @db.VarChar(64)
+}

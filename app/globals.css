@@ -1,0 +1,242 @@
+* {
+    background-color: #ceccce;
+}
+
+.auth {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1000;
+    border: none;
+    border-radius: 30px;
+    background-color: #efedef;
+    perspective: 1000px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container__title {
+  margin: 0;
+  color: #4c4947;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.auth-btn {
+  background: #6ead3a;
+  border: none;
+
+  margin-top: 32px;
+  margin-bottom: 32px;
+  border-radius: 20px;
+  width: 25%;
+  min-height: 30px;
+  overflow: hidden;
+  box-shadow: 0px 2px 26px rgb(0, 0, 0, 0.5), 0px 7px 13px rgba(255, 255, 255, 0.01);
+  cursor: pointer;
+  color: #F7F9FB;
+}
+  
+.auth-btn:hover {
+  border-radius: 50px;
+  box-shadow: 3px 9px 16px rgb(0, 0, 0, 0.4), -3px -3px 10px rgba(255, 255, 255, 0.06), inset 14px 14px 26px rgb(0, 0, 0, 0.3), inset -3px -3px 15px rgba(255, 255, 255, 0.05);
+  border-style: solid;
+  border: none;
+}
+
+.auth-input {
+  width: 50%;
+  height: 32px;
+  padding: 6px;
+  background: rgba(28, 31, 47, 0.16);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #2e344d;
+  box-shadow: 4px 8px 9px rgb(0, 0, 0, 0.5), -13px -13px 23px rgba(255, 255, 255, 0.03);
+  margin-top: 24px;
+  color: #4c4947;
+  font-size: 24px;
+}
+
+.auth-input select {
+  height: 2em;
+}
+
+.form__block__input::placeholder {
+  color: #4c4947;
+}
+
+.auth-bottom {
+  display: flex;
+}
+
+.auth-bottom-text {
+  color: #4c4947;
+  font-size: 24px;
+  margin-right: 16px;
+  margin-top: 32px;
+}
+
+.auth-btn-swith, .mp-btn-add, .mp-btn-add-on, .mp-btn-create {
+  background: #4c4947;
+  border: none;
+  border-radius: 12px;
+  width: 10%;
+  height: 30px;
+  min-height: 30px;
+  overflow: hidden;
+  box-shadow: 0px 2px 26px rgb(0, 0, 0, 0.3), 0px 7px 13px rgba(255, 255, 255, 0.01);
+  cursor: pointer;
+  color: #F7F9FB;
+  margin-top: 32px;
+}
+
+.mp-btn-create {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.auth-btn-swith:hover, .mp-btn-add:hover, .mp-btn-add-on:hover, .mp-btn-create:hover  {
+  background: #6ead3a;
+  border-radius: 50px;
+  box-shadow: 3px 9px 16px rgb(0, 0, 0, 0.4), -3px -3px 10px rgba(255, 255, 255, 0.06), inset 14px 14px 26px rgb(0, 0, 0, 0.3), inset -3px -3px 15px rgba(255, 255, 255, 0.05);
+  border-style: solid;
+  border: none;
+}
+
+.mp-header {
+  width: 100%;
+  height: 140px;
+}
+
+.mp-btn-add-on {
+  background: #6ead3a;
+}
+
+.mp-element-input, .mp-element-input-date {
+  width: auto;
+  height: 24px;
+  background: rgba(28, 31, 47, 0.16);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #2e344d;
+  box-shadow: 4px 8px 9px rgb(0, 0, 0, 0.2), -13px -13px 23px rgba(255, 255, 255, 0.03);
+  margin: 8px;
+  color: #4c4947;
+  font-size: 16px;
+}
+
+.title {
+  font-weight: 800;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.description {
+  width: 90%;
+}
+
+.priority {
+  width: 45%;
+}
+
+.status {
+  width: 45%;
+}
+
+.ct-date-label {
+  color: #4c4947;
+  margin-left: 10%;
+}
+
+.mp-table {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #4c4947;
+  border-collapse: collapse; 
+}
+.mp-table-th {
+  font-weight: bold;
+  padding: 5px;
+  background: #8b8581;
+  border: 1px solid #4c4947;
+}
+.mp-table-td, .mp-table-td-red {
+  border: 1px solid #e9e8e8;
+  padding: 5px;
+}
+
+.mp-table-td-red {
+  color: #96291f;
+  background-color: #d1bbbb;
+}
+
+.mp-table-td-green {
+  color: #0e7640;
+  background-color: #8aaa88;
+}
+
+.mp-form-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 15px;
+  height: 40px;
+  width: 40px;
+  transition: all 0.15s ease-out 0s;
+  background: #ceccce;
+  border: #4c4947 solid 1px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 6px;
+  z-index: 10;
+  border-radius: 50%;
+  margin-left: 40px;
+}
+
+.mp-form-radio:hover {
+  background: #6ead3a;
+}
+
+.mp-form-radio:checked {
+  background: #4c4947;
+}
+
+.mp-form-radio:checked::before {
+  width: 40px;
+  height: 40px;
+  display:flex;
+  content: '^';
+  font-size: 25px;
+  font-weight:bold;
+  position: absolute;
+  align-items:center;
+  justify-content:center;
+}
+
+.ct-container {
+  min-width: 450px;
+  height: 500px;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #474B4F;
+  padding: 24px;
+  z-index: 101;
+}
+
+.mp-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
