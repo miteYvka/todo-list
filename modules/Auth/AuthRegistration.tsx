@@ -64,7 +64,7 @@ const AuthRegistration = ({ toggleAuth, isSideActive, }: IAuthSideProps) => {
                         placeholder='Пароль'
                         {...register('password')}
                     />
-                    <select {...register('headUserId')} className='auth-input'>
+                    <select {...register('headUserId')} className='auth-input-select'>
                         {/* <option value='' disabled selected>Вышестоящий:</option> */}
                         {users.map((user: IHeadUser) => (
                             <option key={user.id} value={user.id}>

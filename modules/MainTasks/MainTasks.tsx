@@ -47,14 +47,14 @@ const MainTasks = () => {
   }
 
   const filterTasksOnEndDate = (task: ITask) => {
-    if (filter === 'today' && !isDeadlineTask(task))
+    if (filter === 'today' && !isDeadlineTask(task) && task.status !== 'Выполнена')
       return (convertToDate(task.endDate).getTime() - today.getTime()) < 86400010
-    else if (filter === 'week' && !isDeadlineTask(task)) {
+    else if (filter === 'week' && !isDeadlineTask(task) && task.status !== 'Выполнена')
       return (convertToDate(task.endDate).getTime() - today.getTime()) < 604800010
-    } else if (filter === 'other' && !isDeadlineTask(task)) 
+    else if (filter === 'other' && !isDeadlineTask(task) && task.status !== 'Выполнена') 
       return true
     else if (filter === 'deadline')
-      return isDeadlineTask(task)
+      return isDeadlineTask(task) && task.status !== 'Выполнена'
     else if (filter === 'full') return true
   }
 

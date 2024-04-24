@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 * {
     background-color: #ceccce;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .auth {
@@ -48,7 +52,7 @@
   border: none;
 }
 
-.auth-input {
+.auth-input, .auth-input-select {
   width: 50%;
   height: 32px;
   padding: 6px;
@@ -60,6 +64,11 @@
   margin-top: 24px;
   color: #4c4947;
   font-size: 24px;
+}
+
+.auth-input-select {
+  width:  52%;
+  height: 42px;
 }
 
 .auth-input select {
@@ -165,7 +174,7 @@
   background: #8b8581;
   border: 1px solid #4c4947;
 }
-.mp-table-td, .mp-table-td-red {
+.mp-table-td, .mp-table-td-red, .mp-table-td-green {
   border: 1px solid #e9e8e8;
   padding: 5px;
 }
@@ -176,8 +185,8 @@
 }
 
 .mp-table-td-green {
-  color: #0e7640;
-  background-color: #8aaa88;
+  color: #4c4947;
+  background-color: #6ead3a;
 }
 
 .mp-form-radio {

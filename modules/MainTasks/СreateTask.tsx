@@ -107,10 +107,10 @@ const CreateTask = ({ formData }: { formData : ITask }) => {
               setStatus(status.target.value)
               register('status')
             }}>
-            <option value="К выполнению">к выполнению</option>
-            <option value="Выполняется">выполняется</option>
-            <option value="Выполнена">выполнена</option>
-            <option value="Отменена">отменена</option>
+            <option value="К выполнению">К выполнению</option>
+            <option value="Выполняется">Выполняется</option>
+            <option value="Выполнена">Выполнена</option>
+            <option value="Отменена">Отменена</option>
           </select>
         </div>
         <select
