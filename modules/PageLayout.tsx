@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import Auth from "./Auth/Auth"
 import { isUserAuth } from "@/lib/utils/common"
+import { Toaster } from "react-hot-toast"
 
 const PageLayout = ({ children }: { children: React.ReactNode }) => {
 
@@ -15,7 +16,7 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
           <html lang='en'>
             <body>
             {!isUserAuth() ? <Auth /> :<>{children}</>}
-              {/* <Toaster position='top-center' reverseOrder={false} /> */}
+              <Toaster position='bottom-center' reverseOrder={false} containerClassName="toast-container"/>
               
             </body>
           </html>

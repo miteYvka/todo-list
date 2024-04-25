@@ -119,3 +119,11 @@ export const isValidAccessToken = async (token: string | undefined) => {
 
 export const parseJwt = (token: string) =>
   JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString())
+
+export const deleteTask = async (id: string) => {
+  return await prismadb.task.delete({
+      where: {
+          id: id
+      }
+  })
+}

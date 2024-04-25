@@ -10,7 +10,7 @@ import { useTaskForm } from "@/hooks/useTaskForm";
 import { parseJwt } from "@/lib/utils/api-routes";
 import { ITask } from "@/type/task";
 import { IHeadUser } from "@/type/user";
-import { handleReload, today } from "@/lib/utils/common";
+import { submitCreateTask, today } from "@/lib/utils/common";
 
 const CreateTask = ({ formData }: { formData : ITask }) => {
 
@@ -30,12 +30,13 @@ const CreateTask = ({ formData }: { formData : ITask }) => {
 
   const { register, handleSubmit } = useTaskForm(handleCreateTask)
 
-  const getUserNameForLogin = () => {
+  const getUserIdForLogin = () => {
     const user = users.filter((user: IHeadUser) => user !== undefined && user.login === parseJwt(localStorage.getItem('auth') as string).login)
     if (user[0])
       return (user[0] as IHeadUser).id
     else return 'no-id'
   }
+
   const submitForm = (data: ITask) => {
     setHeadline(data.headline);
     setDescriptions(data.description);
@@ -49,7 +50,7 @@ const CreateTask = ({ formData }: { formData : ITask }) => {
       refreshDate: today.toISOString(),
       priority: priority,
       status: status,
-      createrId: getUserNameForLogin(),
+      createrId: getUserIdForLogin(),
       responsibleId: responsible
     })}
 
@@ -126,7 +127,7 @@ const CreateTask = ({ formData }: { formData : ITask }) => {
               </option>
             ))}
         </select>
-        <button type='submit' className="mp-btn-create" onClick={handleReload}>Создать</button>
+        <button type='submit' className="mp-btn-create" onClick={() => submitCreateTask(formData.id)}>Создать</button>
       </form>
     </div>
   )

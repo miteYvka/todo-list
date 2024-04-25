@@ -4,6 +4,7 @@ import AuthRegistration from "./AuthRegistration"
 import AuthLogin from "./AuthLogin"
 import { useGate } from "effector-react"
 import { UsersGate } from "@/context/users"
+import { Toaster } from "react-hot-toast"
 
 const Auth = () => {
 
@@ -28,6 +29,7 @@ const toggleAuth = () => {
                 <AuthLogin 
                     toggleAuth={toggleAuth} 
                     isSideActive={isSignInActive}/>}
+                
         </div>
     )
 }

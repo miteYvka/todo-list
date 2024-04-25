@@ -8,10 +8,11 @@ const AuthLogin = ({ toggleAuth }: IAuthSideProps) => {
     const { register, handleSubmit } = useAuthLogin( handleSignIn )
 
     const submitForm = (data: ISignInFx) => {
-        handleSignIn({
-            login: data.login,
-            password: data.password,
-        })}
+        if (data.login !== undefined && data.password !== undefined) {
+            handleSignIn({
+                login: data.login,
+                password: data.password,
+            })}}
 
     const handleReload = () => {
         window.location.reload();
@@ -36,7 +37,7 @@ const AuthLogin = ({ toggleAuth }: IAuthSideProps) => {
                         placeholder='Пароль'
                         {...register('password')}
                     />
-                    <button className='auth-btn' type="submit" onClick={handleReload}>
+                    <button className='auth-btn' type="submit" >
                         Войти
                     </button>
                     <div className="auth-bottom">

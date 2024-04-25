@@ -1,4 +1,5 @@
 import { closeAuthForm, setIsAuth } from "@/context/auth"
+import { handleDeleteTask } from "@/context/task"
 import { loginCheck } from "@/context/user"
 import { ITask } from "@/type/task"
 
@@ -49,6 +50,8 @@ export const triggerLoginCheck = () => {
     loginCheck({ jwt: auth.accessToken })
 }
 
-export const handleReload = () => {
-    window.location.reload();
+export const submitCreateTask = (id: string | null | undefined) => {
+    if (id)
+        handleDeleteTask(id)
+    window.location.reload()
 }
