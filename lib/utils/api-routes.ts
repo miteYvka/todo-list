@@ -127,3 +127,7 @@ export const deleteTask = async (id: string) => {
       }
   })
 }
+
+export async function getTasks() {
+  return await prismadb.task.findMany()
+}
