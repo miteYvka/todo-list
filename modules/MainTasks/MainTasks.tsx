@@ -87,10 +87,12 @@ const MainTasks = () => {
     <div className="mp-container">
       <div className="mp-fullback">
         <div className="mp-header">
-          <button className={`mp-btn-add${isAddTask?'-on':''}`} onClick={toggleAddTask}>
-            Создать задачу
-          </button>
-          <div className="mp-form-radio-list">
+          <div className="mp-header-1">
+            {isAdmin && <button className={`mp-btn-add${isAddTask?'-on':''}`} onClick={toggleAddTask}>
+              Создать задачу
+            </button>}
+          </div>
+          <div className="mp-header-2">
             <input
               type="radio"
               id="today"
@@ -137,8 +139,8 @@ const MainTasks = () => {
               onChange={handleChangeFilter}/>
             <label htmlFor="full">Полный список</label>
           </div>
-          
-            {selectedTask &&
+          <div className="mp-header-3">
+          {selectedTask &&
               <div className="mp-btn-selected">
                 <button className="mp-btn-edit" onClick={editTask}>
                   Редактировать
@@ -147,17 +149,19 @@ const MainTasks = () => {
                   Удалить
                 </button>}
               </div>}
-              <div className="mp-btns-admin-container">
-          <label>Руководитель</label>
-          <div className="mp-btn-admin-duo">
-          <button 
-              className={`mp-btn-admin ${isAdmin && 'btn-active'}`}
-              onClick={toggleAdmin}>Да</button>
-          <button 
-              className={`mp-btn-admin ${!isAdmin && 'btn-active'}`}
-              onClick={toggleAdmin}>Нет</button>
-              </div>
-        </div>
+          </div>
+            
+          <div className="mp-header-4">
+            <label>Руководитель</label>
+            <div className="mp-btn-admin-duo">
+            <button 
+                className={`mp-btn-admin ${isAdmin && 'btn-active'}`}
+                onClick={toggleAdmin}>Да</button>
+            <button 
+                className={`mp-btn-admin ${!isAdmin && 'btn-active'}`}
+                onClick={toggleAdmin}>Нет</button>
+            </div>
+          </div>
         </div>
         
         <table className="mp-table">

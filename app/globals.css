@@ -98,7 +98,6 @@
   background: #4c4947;
   border: none;
   border-radius: 12px;
-  width: 10%;
   height: 30px;
   min-height: 30px;
   overflow: hidden;
@@ -262,7 +261,7 @@
   height: 140px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  
 }
 
 .mp-btns-admin-container {
@@ -316,4 +315,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.mp-header-1 {
+  width: 10%;
+}
+.mp-header-2 {
+  width: 70%;
+}
+.mp-header-3 {
+  width: 10%;
+}
+.mp-header-4 {
+  width: 10%;
+  height: 45px;
 }

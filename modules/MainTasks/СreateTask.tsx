@@ -13,7 +13,6 @@ import { IHeadUser } from "@/type/user";
 import { submitCreateTask, today } from "@/lib/utils/common";
 
 const CreateTask = ({createFormProps}:{createFormProps:ICreateTaskProps}) => {
-//({ formData, isAdmin }: { formData: ITask, isAdmin: boolean })
   useGate(UsersGate)
 
   const users = useUnit($users)
@@ -24,7 +23,7 @@ const CreateTask = ({createFormProps}:{createFormProps:ICreateTaskProps}) => {
   const [endDate, setEndDate] = useState(formData.endDate)
   const [priority, setPriority] = useState(formData.priority)
   const [status, setStatus] = useState(formData.status)
-  const [responsible, setResponsible] = useState(formData.responsibleId)
+  const [responsibleId, setResponsibleId] = useState(formData.responsibleId)
 
   const stringDateInDate = (date: string) => new Date(date)
   const dateInDatePicker = (date: Date) => format(date, 'dd/MM/yyyy')
@@ -43,7 +42,7 @@ const CreateTask = ({createFormProps}:{createFormProps:ICreateTaskProps}) => {
     setDescriptions(data.description);
     setPriority(data.priority);
     setStatus(data.status);
-    setResponsible(data.responsibleId);
+    setResponsibleId(data.responsibleId);
     handleCreateTask({
       headline: headline,
       description: description,
@@ -52,7 +51,7 @@ const CreateTask = ({createFormProps}:{createFormProps:ICreateTaskProps}) => {
       priority: priority,
       status: status,
       createrId: getUserIdForLogin(),
-      responsibleId: responsible
+      responsibleId: responsibleId
     })}
 
   return (
@@ -117,10 +116,10 @@ const CreateTask = ({createFormProps}:{createFormProps:ICreateTaskProps}) => {
           </select>
         </div>
         <select
-          value={responsible}
+          value={responsibleId}
           className='mp-element-input responsible'
           onChange={(e) => {
-            setResponsible(e.target.value)
+            setResponsibleId(e.target.value)
             register('responsibleId')
           }}>
             {users.map((user: IHeadUser) => (

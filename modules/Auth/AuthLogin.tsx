@@ -37,7 +37,7 @@ const AuthLogin = ({ toggleAuth }: IAuthSideProps) => {
                         placeholder='Пароль'
                         {...register('password')}
                     />
-                    <button className='auth-btn' type="submit" >
+                    <button className='auth-btn' type="submit" onClick={handleReload}>
                         Войти
                     </button>
                     <div className="auth-bottom">
