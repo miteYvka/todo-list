@@ -8,16 +8,17 @@ import { handleCreateTask } from "@/context/task";
 import { $users, UsersGate } from "@/context/users";
 import { useTaskForm } from "@/hooks/useTaskForm";
 import { parseJwt } from "@/lib/utils/api-routes";
-import { ITask } from "@/type/task";
+import { ICreateTaskProps, ITask } from "@/type/task";
 import { IHeadUser } from "@/type/user";
 import { submitCreateTask, today } from "@/lib/utils/common";
 
-const CreateTask = ({ formData }: { formData : ITask }) => {
-
+const CreateTask = ({createFormProps}:{createFormProps:ICreateTaskProps}) => {
+//({ formData, isAdmin }: { formData: ITask, isAdmin: boolean })
   useGate(UsersGate)
 
   const users = useUnit($users)
 
+  const formData = createFormProps.task
   const [headline, setHeadline] = useState(formData.headline)
   const [description, setDescriptions] = useState(formData.description)
   const [endDate, setEndDate] = useState(formData.endDate)
@@ -56,7 +57,8 @@ const CreateTask = ({ formData }: { formData : ITask }) => {
 
   return (
     <div className="ct-container">
-      <form className="mp-form" onSubmit={handleSubmit(submitForm)}>
+      {createFormProps.isAdmin ? 
+        <form className="mp-form" onSubmit={handleSubmit(submitForm)}>
         <input 
           type="text" 
           className="mp-element-input title" 
@@ -127,8 +129,30 @@ const CreateTask = ({ formData }: { formData : ITask }) => {
               </option>
             ))}
         </select>
-        <button type='submit' className="mp-btn-create" onClick={() => submitCreateTask(formData.id)}>Создать</button>
-      </form>
+        <button type='submit' className="mp-btn-create" onClick={() => submitCreateTask(formData.id)}>Создать/Редактировать</button>
+        <button className="mp-btn-create" onClick={createFormProps.toClose}>Закрыть</button>
+      </form>:
+      <form className="form-no-admin">
+        <div>
+        <select
+            className="mp-element-input status"
+            value={status}
+            onChange={(status) => {
+              setStatus(status.target.value)
+              register('status')
+            }}>
+            <option value="К выполнению">К выполнению</option>
+            <option value="Выполняется">Выполняется</option>
+            <option value="Выполнена">Выполнена</option>
+            <option value="Отменена">Отменена</option>
+          </select>
+          <span> Статус </span>
+        </div>
+          <div>
+          <button type='submit' className="mp-btn-create" onClick={() => submitCreateTask(formData.id)}>Редиктировать</button>
+          <button className="mp-btn-create" onClick={createFormProps.toClose}>Закрыть</button>
+          </div>
+      </form>}
     </div>
   )
 }

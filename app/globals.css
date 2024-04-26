@@ -94,7 +94,7 @@
   margin-top: 32px;
 }
 
-.auth-btn-swith, .mp-btn-add, .mp-btn-add-on, .mp-btn-create {
+.auth-btn-swith, .mp-btn-add, .mp-btn-add-on, .mp-btn-create, .mp-btn-edit, .mp-btn-delete {
   background: #4c4947;
   border: none;
   border-radius: 12px;
@@ -108,22 +108,17 @@
   margin-top: 32px;
 }
 
-.mp-btn-create {
+.mp-btn-create, .mp-btn-edit, .mp-btn-delete {
   width: 50%;
   margin-left: 25%;
 }
 
-.auth-btn-swith:hover, .mp-btn-add:hover, .mp-btn-add-on:hover, .mp-btn-create:hover  {
+.auth-btn-swith:hover, .mp-btn-add:hover, .mp-btn-add-on:hover, .mp-btn-create:hover, .mp-btn-edit:hover, .mp-btn-delete:hover  {
   background: #6ead3a;
   border-radius: 50px;
   box-shadow: 3px 9px 16px rgb(0, 0, 0, 0.4), -3px -3px 10px rgba(255, 255, 255, 0.06), inset 14px 14px 26px rgb(0, 0, 0, 0.3), inset -3px -3px 15px rgba(255, 255, 255, 0.05);
   border-style: solid;
   border: none;
-}
-
-.mp-header {
-  width: 100%;
-  height: 140px;
 }
 
 .mp-btn-add-on {
@@ -256,4 +251,69 @@
 
 .mp-fullback {
   height: 100vh;
+}
+
+.mp-btn-selected {
+  width: 200px;
+}
+
+.mp-header {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mp-btns-admin-container {
+  margin-left: 1%;
+  margin-top: 1%;
+}
+
+.mp-form-radio-list {
+  margin-left: 2%;
+}
+
+.mp-btn-selected {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.mp-btn-edit, .mp-btn-delete {
+  margin-top: 30%;
+  margin-left: 1%;
+  font-size: 12px;
+  width: 200 ;
+}
+
+.mp-select-item {
+  border: black solid 2px;
+}
+
+.mp-btn-admin {
+  border-radius: 32px;
+  border: 1px solid #565C66;
+  font-size: 16px;
+  color: #A5A8AD;
+  transition: border-color .2s ease-in-out, color .2s ease-in-out;
+  margin-left: 4px;
+}
+
+.mp-btn-admin.btn-active {
+  background-color: #6ead3a;
+  color: rgba(255, 255, 255, 0.90);
+}
+
+.mp-btn-admin:hover {
+  transition: border-color .2s ease-in-out, color .2s ease-in-out;
+  border-color: #61892F !important;
+  color: rgba(255, 255, 255, 0.90)
+}
+
+.form-no-admin {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }

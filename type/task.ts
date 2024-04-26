@@ -18,3 +18,9 @@ export interface IEditTask {
     status: string
     responsibleId: string
 }
+
+export interface ICreateTaskProps {
+    task: ITask
+    isAdmin: boolean
+    toClose: VoidFunction
+}

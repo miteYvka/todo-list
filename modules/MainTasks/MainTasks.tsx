@@ -20,9 +20,9 @@ const MainTasks = () => {
   const [isAddTask, setAddTask ] = useState(false)
   const [filter, setFilter] = useState('full')
   const toggleAddTask = () => setAddTask(!isAddTask)
-  const closeFormAddTask = () => {
-    
-    setAddTask(false)}
+  const [isAdmin, setAdmin] = useState(false)
+  const toggleAdmin = () => setAdmin(!isAdmin)
+
 
   const getUserNameForResponsibleId = (id : string) => {
     const user = users.filter((user: IHeadUser) => user !== undefined && user.id === id)
@@ -46,6 +46,8 @@ const MainTasks = () => {
   const [selectedTask, setSelectedTask] = useState<ITask | null>()
   const toggleSelectTask = (task: ITask) => setSelectedTask(task)
   
+  const isThisTask = (task: ITask) => task === selectedTask
+
   const deleteTask = () => {
     if (selectedTask && selectedTask.id) {
         handleDeleteTask(selectedTask.id)
@@ -115,7 +117,7 @@ const MainTasks = () => {
               className="mp-form-radio"
               checked={filter === 'other'}
               onChange={handleChangeFilter}/>
-            <label htmlFor="moreThanWeek">Все активные</label>
+            <label htmlFor="other">Все активные</label>
             <input
               type="radio"
               id="deadline"
@@ -124,7 +126,7 @@ const MainTasks = () => {
               className="mp-form-radio"
               checked={filter === 'deadline'}
               onChange={handleChangeFilter}/>
-            <label htmlFor="moreThanWeek">Просроченные</label>
+            <label htmlFor="deadline">Просроченные</label>
             <input
               type="radio"
               id="full"
@@ -133,17 +135,29 @@ const MainTasks = () => {
               className="mp-form-radio"
               checked={filter === 'full'}
               onChange={handleChangeFilter}/>
-            <label htmlFor="moreThanWeek">Полный список</label>
+            <label htmlFor="full">Полный список</label>
           </div>
-          {selectedTask &&
-            <div className="mp-btn-selected">
-              <button className="mp-btn-edit" onClick={editTask}>
-                Редактировать
-              </button>
-              <button className="mp-btn-delete" onClick={deleteTask}>
-                Удалить
-              </button>
-            </div>}
+          
+            {selectedTask &&
+              <div className="mp-btn-selected">
+                <button className="mp-btn-edit" onClick={editTask}>
+                  Редактировать
+                </button>
+                {isAdmin && <button className="mp-btn-delete" onClick={deleteTask}>
+                  Удалить
+                </button>}
+              </div>}
+              <div className="mp-btns-admin-container">
+          <label>Руководитель</label>
+          <div className="mp-btn-admin-duo">
+          <button 
+              className={`mp-btn-admin ${isAdmin && 'btn-active'}`}
+              onClick={toggleAdmin}>Да</button>
+          <button 
+              className={`mp-btn-admin ${!isAdmin && 'btn-active'}`}
+              onClick={toggleAdmin}>Нет</button>
+              </div>
+        </div>
         </div>
         
         <table className="mp-table">
@@ -162,9 +176,9 @@ const MainTasks = () => {
           <tbody>
             {tasks
               .filter(filterTasksOnEndDate)
-              .sort((taskA: ITask , taskB: ITask) => new Date(taskB.refreshDate).getTime() - new Date(taskA.refreshDate).getTime())
+              .sort((taskA: ITask, taskB: ITask) => new Date(taskB.refreshDate).getTime() - new Date(taskA.refreshDate).getTime())
               .map((task: ITask) => (
-                <tr key={task.id} onClick={() => toggleSelectTask(task)}>
+                <tr key={task.id} onClick={() => toggleSelectTask(task)} className={`${isThisTask(task)&&'mp-select-item'}`}>
                   <td className={`mp-table-td${colorTask(task)}`}>{task.headline}</td>
                   <td className={`mp-table-td${colorTask(task)}`}>{task.description}</td>
                   <td className={`mp-table-td${colorTask(task)}`}>{converToDateToView(task.endDate)}</td>
@@ -178,7 +192,7 @@ const MainTasks = () => {
           </tbody>
         </table>
       </div>
-      {isAddTask && <CreateTask formData={FormData}/>}  
+      {isAddTask && <CreateTask createFormProps={{ task: FormData, isAdmin: isAdmin, toClose: toggleAddTask }} />}  
     </div>
   )
 }
